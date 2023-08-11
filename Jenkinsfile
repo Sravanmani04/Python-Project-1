@@ -2,9 +2,6 @@ pipeline{
     agent{
         label "slave"
     }
-    environment{
-
-    }
     stages{
         stage("Pipeline metadata"){
             steps{
