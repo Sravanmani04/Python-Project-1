@@ -20,5 +20,6 @@ unzip /tmp/sonar-scanner.zip -d /opt && \
 rm /tmp/sonar-scanner.zip  && \
 mv /opt/sonar-scanner-4.8.1.3023-linux /opt/sonar-scanner 
 
+RUN sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' /opt/sonar-scanner/bin/sonar-scanner
 ENV TZ="Asia/Kolkata"
 CMD ["bin/bash"]
