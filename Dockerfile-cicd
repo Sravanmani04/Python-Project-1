@@ -15,6 +15,9 @@ rsync \
 maven \
 git
 
+RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/main
+RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/community
+
 RUN curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.1.3023-linux.zip -o /tmp/sonar-scanner.zip && \
 unzip /tmp/sonar-scanner.zip -d /opt && \
 rm /tmp/sonar-scanner.zip  && \
