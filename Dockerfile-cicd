@@ -1,12 +1,11 @@
 FROM alpine:3.14
 LABEL maintainer="Sravan"
 USER root
-RUN apk add --update --no-cache 
+RUN apk add --update --no-cache curl
 RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/main
 RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/community
 RUN apk add --update --no-cache \
 jq \
-curl \
 bash \
 zip \
 openjdk17 \
