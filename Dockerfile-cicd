@@ -18,7 +18,7 @@ git
 RUN curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.1.3023-linux.zip -o /tmp/sonar-scanner.zip && \
 unzip /tmp/sonar-scanner.zip -d /opt && \
 rm /tmp/sonar-scanner.zip  && \
-mv /opt/sonar-scanner-cli-4.8.1.3023-linux /opt/sonar-scanner 
+mv /opt/sonar-scanner-4.8.1.3023-linux /opt/sonar-scanner 
 
 ENV TZ="Asia/Kolkata"
 CMD ["bin/bash"]
