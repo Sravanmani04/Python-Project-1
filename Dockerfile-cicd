@@ -1,7 +1,7 @@
 FROM alpine:3.14
 LABEL maintainer="Sravan"
 USER root
-RUN apk add --update --nocache \
+RUN apk add --update --no-cache \
 jq \
 curl \
 bash \
