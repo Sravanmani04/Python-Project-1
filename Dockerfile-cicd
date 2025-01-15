@@ -6,7 +6,7 @@ jq \
 curl \
 bash \
 zip \
-openjdk11 \
+openjdk17 \
 tzdata \
 aws-cli \
 docker-cli \
