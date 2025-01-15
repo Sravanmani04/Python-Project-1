@@ -1,21 +1,39 @@
 pipeline{
     agent{
-        label "slave"
+        dockerfile{
+            filename 'Dockerfile-cicd'
+            args '-u 0:0 --net host --privileged -v /var/rundocker.sock:/var/run/docker.sock'
+        }
+    }
+    options{
+        timestamps()
+    }
+    environment{
+        SONAR_SCANNER_PATH = '/opt/sonar-scanner/bin/sonar-scanner'
+        SONARQUBE_LOGIN_SECRET = ''
     }
     stages{
-        stage("Pipeline metadata"){
+        stage('Sonarqube Analysis'){
             steps{
-                echo "========METADATA========"
                 script{
-                    try{
-                       sh "exit 1"
+                    withSonarQubeEnv('SonarQube'){
+                        sh '''
+                        ${SONAR_SCANNER_PATH} -Dsonar.login=${SONARQUBE_LOGIN_SECRET}
+                        '''
                     }
-                    catch(Exception emy){
-                        echo "pipeline metadata check Failed: ${emy.message}"
-                        sh "exit 1"
+                }
+            }
+        }
+        stage('Quality-gate'){
+            steps{
+                withSonarQubeEnv('SonarQube'){
+                    timeout(time: 1, unit: 'HOURS'){
+                        sh '''
+                        waitForQualityGate abortPipeline: false
+                        '''
                     }
                 }
             }
         }
     }
-}        
+}
