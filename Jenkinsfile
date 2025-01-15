@@ -18,7 +18,7 @@ pipeline{
                 script{
                     withSonarQubeEnv('SonarQube'){
                         sh '''
-                        ${SONAR_SCANNER_PATH} -Dsonar.login=${SONARQUBE_LOGIN_SECRET}
+                        ${SONAR_SCANNER_PATH}
                         '''
                     }
                 }
