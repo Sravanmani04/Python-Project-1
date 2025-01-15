@@ -1,6 +1,9 @@
 FROM alpine:3.14
 LABEL maintainer="Sravan"
 USER root
+RUN apk add --update --no-cache 
+RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/main
+RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/community
 RUN apk add --update --no-cache \
 jq \
 curl \
@@ -14,9 +17,6 @@ less \
 rsync \
 maven \
 git
-
-RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/main
-RUN curl http://dl-cdn.alpinelinux.org/alpine/v3.14/community
 
 RUN curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.1.3023-linux.zip -o /tmp/sonar-scanner.zip && \
 unzip /tmp/sonar-scanner.zip -d /opt && \
